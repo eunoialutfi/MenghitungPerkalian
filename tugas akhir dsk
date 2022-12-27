@@ -1,0 +1,23 @@
+;================================;
+; PROGRAM : KALI.ASM ;
+; AUTHOR : S'to ;
+; FUNGSI : MENGALIKAN BILANGAN;
+; 16 BIT, HASIL ;
+; PADA DX:AX ;
+;================================;
+.MODEL SMALL
+.CODE
+ORG 100h
+TData :
+JMP Proses ; Lompat ke Proses
+A DW 01EFh
+B DW 02FEh
+HslLo DW ?
+HslHi DW ?
+Proses:
+MOV AX,A ; AX=1EF
+MUL B ; Kalikan 1FH*2FE
+MOV HslLo,AX ; AX bernilai C922 sehingga HslLo=C922
+MOV HslHi,DX ; DX bernilai 0005 sehingga HslHi=0005
+INT 20h ; Kembali ke DOS
+END TData
